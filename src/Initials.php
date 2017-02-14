@@ -65,12 +65,12 @@ class Initials
         return $this->parameter_initials;
     }
 
-	public function __toString()
-	{
-		return $this->getInitials();
-	}
+    public function __toString()
+    {
+        return $this->getInitials();
+    }
 
-	/**
+    /**
      * Generate a two-letter initial from a name,
      * and if no name, assume its already initials.
      * For safety, we limit it to two characters,
