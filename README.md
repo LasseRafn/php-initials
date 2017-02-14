@@ -1,5 +1,5 @@
 # Generate initials from names
-This is the core of [LasseRafn/php-initials](http://github.com/LasseRafn/php-initials), or well.. the initials generation part of it.
+This is the core of [LasseRafn/php-initial-avatar-generator](http://github.com/LasseRafn/php-initial-avatar-generator), or well.. the initials generation part of it.
 
 It's framework agnostic, which is different from basically everything else I do, you're welcome.
  
