@@ -65,6 +65,11 @@ class Initials
         return $this->parameter_initials;
     }
 
+	/**
+	 * Return the initials.
+	 *
+	 * @return string
+	 */
     public function __toString()
     {
         return $this->getInitials();
