@@ -4,17 +4,17 @@ This is the core of [LasseRafn/php-initial-avatar-generator](http://github.com/L
 It's framework agnostic, which is different from basically everything else I do, you're welcome.
  
 <p align="center"> 
-    <a href="https://travis-ci.org/LasseRafn/php-initials"><img src="https://img.shields.io/travis/LasseRafn/php-initials.svg?style=flat-square" alt="Build Status"></a>
-    
-    <a href="https://coveralls.io/github/LasseRafn/php-initials"><img src="https://img.shields.io/coveralls/LasseRafn/php-initials.svg?style=flat-square" alt="Coverage"></a>
-    
-    <a href="https://styleci.io/repos/78973710"><img src="https://styleci.io/repos/78973710/shield?branch=master" alt="StyleCI Status"></a>
-    
-    <a href="https://packagist.org/packages/LasseRafn/php-initials"><img src="https://img.shields.io/packagist/dt/LasseRafn/php-initials.svg?style=flat-square" alt="Total Downloads"></a>
-    
-    <a href="https://packagist.org/packages/LasseRafn/php-initials"><img src="https://img.shields.io/packagist/v/LasseRafn/php-initials.svg?style=flat-square" alt="Latest Stable Version"></a>
-    
-    <a href="https://packagist.org/packages/LasseRafn/php-initials"><img src="https://img.shields.io/packagist/l/LasseRafn/php-initials.svg?style=flat-square" alt="License"></a>
+<a href="https://travis-ci.org/LasseRafn/php-initials"><img src="https://img.shields.io/travis/LasseRafn/php-initials.svg?style=flat-square" alt="Build Status"></a>
+
+<a href="https://coveralls.io/github/LasseRafn/php-initials"><img src="https://img.shields.io/coveralls/LasseRafn/php-initials.svg?style=flat-square" alt="Coverage"></a>
+
+<a href="https://styleci.io/repos/78973710"><img src="https://styleci.io/repos/78973710/shield?branch=master" alt="StyleCI Status"></a>
+
+<a href="https://packagist.org/packages/LasseRafn/php-initials"><img src="https://img.shields.io/packagist/dt/LasseRafn/php-initials.svg?style=flat-square" alt="Total Downloads"></a>
+
+<a href="https://packagist.org/packages/LasseRafn/php-initials"><img src="https://img.shields.io/packagist/v/LasseRafn/php-initials.svg?style=flat-square" alt="Latest Stable Version"></a>
+
+<a href="https://packagist.org/packages/LasseRafn/php-initials"><img src="https://img.shields.io/packagist/l/LasseRafn/php-initials.svg?style=flat-square" alt="License"></a>
 </p>
 
 ## Installation
