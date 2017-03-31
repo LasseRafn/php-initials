@@ -2,6 +2,8 @@
 This is the core of [LasseRafn/php-initial-avatar-generator](http://github.com/LasseRafn/php-initial-avatar-generator), or well.. the initials generation part of it.
 
 It's framework agnostic, which is different from basically everything else I do, you're welcome.
+
+Supports UTF8 (yes.. also emojis.)
  
 <p align="center"> 
 <a href="https://travis-ci.org/LasseRafn/php-initials"><img src="https://img.shields.io/travis/LasseRafn/php-initials.svg?style=flat-square" alt="Build Status"></a>
