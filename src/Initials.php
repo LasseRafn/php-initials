@@ -147,7 +147,7 @@ class Initials
 	{
 		foreach ( static::charsArray() as $key => $val )
 		{
-			$string = str_replace( $val, $key, $string );
+			$string = str_replace( $val, mb_substr($key, 0, 1), $string );
 		}
 
 		return preg_replace( '/[^\x20-\x7E]/u', '', $string );
