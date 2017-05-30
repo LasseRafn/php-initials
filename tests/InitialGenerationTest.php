@@ -4,43 +4,52 @@ use PHPUnit\Framework\TestCase;
 
 class InitialGenerationTest extends TestCase
 {
-    public function testInitialsAreGeneratedFromFullname()
-    {
-        $avatar = new \LasseRafn\Initials\Initials();
+	public function testInitialsAreGeneratedFromFullname()
+	{
+		$avatar = new \LasseRafn\Initials\Initials();
 
-        // Two names
+		// Two names
 
-        $avatar->name('John Doe');
+		$avatar->name( 'John Doe' );
 
-        $this->assertEquals('JD', $avatar->getInitials());
+		$this->assertEquals( 'JD', $avatar->getInitials() );
 
-        // Single name
+		// Single name
 
-        $avatar->name('John');
+		$avatar->name( 'John' );
 
-        $this->assertEquals('JO', $avatar->getInitials());
+		$this->assertEquals( 'JO', $avatar->getInitials() );
 
-        // Initials
+		// Initials
 
-        $avatar->name('MA');
+		$avatar->name( 'MA' );
 
-        $this->assertEquals('MA', $avatar->getInitials());
+		$this->assertEquals( 'MA', $avatar->getInitials() );
 
-        // Three names
+		// Three names
 
-        $avatar->name('John Doe Bergerson');
+		$avatar->name( 'John Doe Bergerson' );
 
-        $this->assertEquals('JB', $avatar->getInitials());
+		$this->assertEquals( 'JB', $avatar->getInitials() );
 
-        // Other name
+		// Other name
 
-        $avatar->name('Gustav Årgonson');
+		$avatar->name( 'Gustav Årgonson' );
 
-        $this->assertEquals('GÅ', $avatar->getInitials());
+		$this->assertEquals( 'GÅ', $avatar->getInitials() );
 
-        $avatar->name('Chanel Butterman');
+		$avatar->name( 'Chanel Butterman' );
 
-        $this->assertNotEquals('AB', $avatar->getInitials());
-        $this->assertEquals('CB', $avatar->getInitials());
-    }
+		$this->assertNotEquals( 'AB', $avatar->getInitials() );
+		$this->assertEquals( 'CB', $avatar->getInitials() );
+
+		$avatar->name( 'Gustav Årgonson' );
+
+		$this->assertEquals( 'GA', $avatar->getUrlfriendlyInitials() );
+
+		$avatar->length( 3 )->name( 'Morten Bæhrenz' );
+
+		$this->assertEquals( 'MBA', $avatar->getUrlfriendlyInitials() );
+		$this->assertEquals( 3, strlen( $avatar->getUrlfriendlyInitials() ) );
+	}
 }
