@@ -20,8 +20,6 @@ You just require using composer and you're good to go!
 composer require lasserafn/php-initials
 ```
 
-Rad, *and long*, package name.. huh? Sorry. I'm not very good with names.
-
 ## Usage
 As with installation, usage is quite simple. Generating a image is done by running:
 ```php
