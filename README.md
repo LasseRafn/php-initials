@@ -29,6 +29,7 @@ echo (new LasseRafn\Initials\Initials)->name('Justine Bieber')->generate();     
 echo (new LasseRafn\Initials\Initials('John Christian Doe'))->generate();       // Output: JD
 echo (new LasseRafn\Initials\Initials)->generate('Leonardo');                   // Output: LE
 echo (new LasseRafn\Initials\Initials)->length(1)->generate('Camilla');         // Output: C
+echo (new LasseRafn\Initials\Initials)->length(3)->name('Jens Ølsted')->getUrlfriendlyInitials();         // Output: JOL
 ````
 
 ## Supported methods and parameters
