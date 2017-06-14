@@ -44,4 +44,4 @@ $initials->name('Albert Magnum')->length(3)->generate();
 ````
 
 ## Requirements
-* PHP 7.0 or 7.1
+* PHP 5.6, 7.0 or 7.1
