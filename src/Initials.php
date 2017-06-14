@@ -15,7 +15,7 @@ class Initials
 	 *
 	 * @return Initials
 	 */
-	public function name( string $nameOrInitials ): self
+	public function name( $nameOrInitials )
 	{
 		$this->generate( $nameOrInitials );
 
@@ -29,7 +29,7 @@ class Initials
 	 *
 	 * @return Initials
 	 */
-	public function length( int $length = 2 ): self
+	public function length( $length = 2 )
 	{
 		$this->parameter_length   = (int) $length;
 		$this->parameter_initials = $this->generateInitials();
@@ -44,7 +44,7 @@ class Initials
 	 *
 	 * @return string
 	 */
-	public function generate( $name = null ): string
+	public function generate( $name = null )
 	{
 		if ( $name !== null )
 		{
@@ -60,7 +60,7 @@ class Initials
 	 *
 	 * @return string
 	 */
-	public function getInitials(): string
+	public function getInitials()
 	{
 		return $this->parameter_initials;
 	}
@@ -71,7 +71,7 @@ class Initials
 	 *
 	 * @return string
 	 */
-	public function getUrlfriendlyInitials(): string
+	public function getUrlfriendlyInitials()
 	{
 		$urlFriendlyInitials = $this->convertToUrlFriendlyString( $this->getInitials() );
 
@@ -98,7 +98,7 @@ class Initials
 	 *
 	 * @return string
 	 */
-	private function generateInitials(): string
+	private function generateInitials()
 	{
 		$nameOrInitials = mb_strtoupper( trim( $this->parameter_name ) );
 		$names          = explode( ' ', $nameOrInitials );
@@ -143,7 +143,7 @@ class Initials
 	 *
 	 * @return string
 	 */
-	private function convertToUrlFriendlyString( $string ): string
+	private function convertToUrlFriendlyString( $string )
 	{
 		foreach ( static::charsArray() as $key => $val )
 		{
