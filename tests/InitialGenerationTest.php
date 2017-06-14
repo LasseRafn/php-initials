@@ -56,5 +56,10 @@ class InitialGenerationTest extends TestCase
 
 		$this->assertEquals( 'JOL', $avatar->getUrlfriendlyInitials() );
 		$this->assertEquals( 3, strlen( $avatar->getUrlfriendlyInitials() ) );
+
+		$avatar->length(2)->name( 'Jens Ølsted' );
+
+		$this->assertEquals( 'JO', $avatar->getUrlfriendlyInitials() );
+		$this->assertEquals( 2, strlen( $avatar->getUrlfriendlyInitials() ) );
 	}
 }

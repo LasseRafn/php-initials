@@ -3,7 +3,7 @@ This is the core of [LasseRafn/php-initial-avatar-generator](http://github.com/L
 
 It's framework agnostic, which is different from basically everything else I do, you're welcome.
 
-Supports UTF8 (yes.. also emojis.)
+Supports UTF8 (yes, also emojis.)
  
 <p align="center"> 
 <a href="https://travis-ci.org/LasseRafn/php-initials"><img src="https://img.shields.io/travis/LasseRafn/php-initials.svg?style=flat-square" alt="Build Status"></a>
@@ -16,32 +16,35 @@ Supports UTF8 (yes.. also emojis.)
 
 ## Installation
 You just require using composer and you're good to go!
-````bash
+```bash
 composer require lasserafn/php-initials
-````
+```
+
 Rad, *and long*, package name.. huh? Sorry. I'm not very good with names.
 
 ## Usage
 As with installation, usage is quite simple. Generating a image is done by running:
-````php
-echo (string) (new LasseRafn\Initials\Initials('Lasse Rafn'));                  // Output: LR
-echo (new LasseRafn\Initials\Initials)->name('Justine Bieber')->generate();     // Output: JB
-echo (new LasseRafn\Initials\Initials('John Christian Doe'))->generate();       // Output: JD
-echo (new LasseRafn\Initials\Initials)->generate('Leonardo');                   // Output: LE
-echo (new LasseRafn\Initials\Initials)->length(1)->generate('Camilla');         // Output: C
-echo (new LasseRafn\Initials\Initials)->length(3)->name('Jens Ølsted')->getUrlfriendlyInitials();         // Output: JOL
-````
+```php
+use LasseRafn\Initials\Initials;
+
+echo (new Initials('Lasse Rafn'));                                   // Output: LR
+echo (new Initials)->name('Justine Bieber')->generate();             // Output: JB
+echo (new Initials('John Christian Doe'))->generate();               // Output: JD
+echo (new Initials)->generate('Leonardo');                           // Output: LE
+echo (new Initials)->length(1)->generate('Camilla');                 // Output: C
+echo (new Initials)->name('Jens Ølsted')->getUrlfriendlyInitials();  // Output: JO
+```
 
 ## Supported methods and parameters
 ### Name (initials) - default: JD
-````php
+```php
 $initials->name('Albert Magnum')->generate();
-````
+```
 
 ### Length - default: 2
-````php
+```php
 $initials->name('Albert Magnum')->length(3)->generate();
-````
+```
 
 ## Requirements
 * PHP 5.6, 7.0 or 7.1
