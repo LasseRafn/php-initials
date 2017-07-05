@@ -1,4 +1,5 @@
 # Generate initials from names
+
 This is the core of [LasseRafn/php-initial-avatar-generator](http://github.com/LasseRafn/php-initial-avatar-generator), or well.. the initials generation part of it.
 
 It's framework agnostic, which is different from basically everything else I do, you're welcome.
@@ -15,13 +16,16 @@ Supports UTF8 (yes, also emojis.)
 </p>
 
 ## Installation
+
 You just require using composer and you're good to go!
 ```bash
 composer require lasserafn/php-initials
 ```
 
 ## Usage
+
 As with installation, usage is quite simple. Generating a image is done by running:
+
 ```php
 use LasseRafn\Initials\Initials;
 
@@ -33,16 +37,40 @@ echo (new Initials)->length(1)->generate('Camilla');                 // Output: 
 echo (new Initials)->name('Jens Ølsted')->getUrlfriendlyInitials();  // Output: JO
 ```
 
-## Supported methods and parameters
-### Name (initials) - default: JD
+All you'll have to do is either pass in the name in the constructor like so:
+
+```php
+echo new Initials('The Name Here'); // TH
+```
+
+or use the `name($name)` method, to specify the name.
+
+
+## Supported methods
+
+### name($name = 'John Doe')
+
 ```php
 $initials->name('Albert Magnum')->generate();
 ```
 
-### Length - default: 2
+### length($length = 2)
+
 ```php
 $initials->name('Albert Magnum')->length(3)->generate();
 ```
+
+### generate()
+
+This method will output the initials. It's completely optional, you could also just echo out the class as it has a `__toString()` method.
+
+```php
+$initials->name('Albert Magnum')->generate();
+```
+
+### getUrlfriendlyInitials()
+
+Will output url-friendly initials (stripping characters like ÆØÅ)
 
 ## Requirements
 * PHP 5.6, 7.0 or 7.1
