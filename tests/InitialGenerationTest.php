@@ -67,4 +67,22 @@ class InitialGenerationTest extends TestCase
         $this->assertEquals('DD', $avatar->getUrlfriendlyInitials());
         $this->assertEquals(2, strlen($avatar->getUrlfriendlyInitials()));
     }
+
+    public function testCanGetInitialsWithDifferentLengthWhenUsingPredefinedInitials() {
+	    $avatar = new \LasseRafn\Initials\Initials();
+
+	    $avatar->name('AMA')->length(3);
+
+	    $this->assertEquals('AMA', $avatar->generate());
+	    $this->assertEquals(3, strlen($avatar->generate()));
+    }
+
+    public function testLimitingWorks() {
+	    $avatar = new \LasseRafn\Initials\Initials();
+
+	    $avatar->name('Amanda Rochnick Lorentz');
+
+	    $this->assertEquals('AL', $avatar->generate());
+	    $this->assertEquals(2, strlen($avatar->generate()));
+    }
 }
