@@ -4,9 +4,10 @@ namespace LasseRafn\Initials;
 
 class Initials
 {
-    private $parameter_length = 2;
-    private $parameter_initials = 'JD';
-    private $parameter_name = 'John Doe';
+    private $length = 2;
+    private $initials = 'JD';
+    private $keepCase = false;
+    private $name = 'John Doe';
 
     /**
      * Set the name used for generating initials.
@@ -23,6 +24,21 @@ class Initials
     }
 
     /**
+     * Set if should keep lettercase on name.
+     * Setting this to false (default) will uppercase the name.
+     *
+     * @param boolean $keepCase
+     *
+     * @return Initials
+     */
+    public function keepCase($keepCase = true)
+    {
+        $this->keepCase = $keepCase;
+
+        return $this;
+    }
+
+    /**
      * Set the length of the generated initials.
      *
      * @param int $length
@@ -31,8 +47,8 @@ class Initials
      */
     public function length($length = 2)
     {
-        $this->parameter_length = (int) $length;
-        $this->parameter_initials = $this->generateInitials();
+        $this->length = (int) $length;
+        $this->initials = $this->generateInitials();
 
         return $this;
     }
@@ -47,8 +63,8 @@ class Initials
     public function generate($name = null)
     {
         if ($name !== null) {
-            $this->parameter_name = $name;
-            $this->parameter_initials = $this->generateInitials();
+            $this->name = $name;
+            $this->initials = $this->generateInitials();
         }
 
         return (string) $this;
@@ -61,7 +77,7 @@ class Initials
      */
     public function getInitials()
     {
-        return $this->parameter_initials;
+        return $this->initials;
     }
 
     /**
@@ -74,7 +90,7 @@ class Initials
     {
         $urlFriendlyInitials = $this->convertToUrlFriendlyString($this->getInitials());
 
-        $urlFriendlyInitials = mb_substr($urlFriendlyInitials, 0, $this->parameter_length);
+        $urlFriendlyInitials = mb_substr($urlFriendlyInitials, 0, $this->length);
 
         return $urlFriendlyInitials;
     }
@@ -99,7 +115,12 @@ class Initials
      */
     private function generateInitials()
     {
-        $nameOrInitials = mb_strtoupper(trim($this->parameter_name));
+	    $nameOrInitials = trim($this->name);
+
+    	if( !$this->keepCase ) {
+		    $nameOrInitials = mb_strtoupper($nameOrInitials);
+	    }
+
         $names = explode(' ', $nameOrInitials);
         $initials = $nameOrInitials;
         $assignedNames = 0;
@@ -108,10 +129,10 @@ class Initials
             $initials = '';
             $start = 0;
 
-            for ($i = 0; $i < $this->parameter_length; $i++) {
+            for ($i = 0; $i < $this->length; $i++) {
                 $index = $i;
 
-                if (($index === ($this->parameter_length - 1) && $index > 0) || ($index > (count($names) - 1))) {
+                if (($index === ($this->length - 1) && $index > 0) || ($index > (count($names) - 1))) {
                     $index = count($names) - 1;
                 }
 
@@ -124,7 +145,7 @@ class Initials
             }
         }
 
-        $initials = mb_substr($initials, 0, $this->parameter_length);
+        $initials = mb_substr($initials, 0, $this->length);
 
         return $initials;
     }
