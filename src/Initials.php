@@ -4,10 +4,11 @@ namespace LasseRafn\Initials;
 
 class Initials
 {
-    private $length = 2;
-    private $initials = 'JD';
-    private $keepCase = false;
-    private $name = 'John Doe';
+    protected $length = 2;
+    protected $initials = 'JD';
+    protected $keepCase = false;
+    protected $allowSpecialCharacters = true;
+    protected $name = 'John Doe';
 
     /**
      * Set the name used for generating initials.
@@ -34,6 +35,20 @@ class Initials
     public function keepCase($keepCase = true)
     {
         $this->keepCase = $keepCase;
+
+        return $this;
+    }
+
+    /**
+     * Set if should allow (or remove) special characters.
+     *
+     * @param boolean $allowSpecialCharacters
+     *
+     * @return Initials
+     */
+    public function allowSpecialCharacters($allowSpecialCharacters = true)
+    {
+        $this->allowSpecialCharacters = $allowSpecialCharacters;
 
         return $this;
     }
@@ -113,7 +128,7 @@ class Initials
      *
      * @return string
      */
-    private function generateInitials()
+    protected function generateInitials()
     {
 	    $nameOrInitials = trim($this->name);
 
@@ -121,7 +136,24 @@ class Initials
 		    $nameOrInitials = mb_strtoupper($nameOrInitials);
 	    }
 
+    	if( !$this->allowSpecialCharacters ) {
+    		$nameOrInitials = preg_replace('/[!@#$%^&*(),.?":{}|<>_]/', '', $nameOrInitials);
+	    }
+
+	    $nameOrInitials = trim( trim( $nameOrInitials, '-' ) );
+
         $names = explode(' ', $nameOrInitials);
+
+	    // Get names with dash (-) between into separate names
+	    $names = array_map( static function ($namePart) { return explode('-', $namePart); }, $names );
+	    $realNames = [];
+
+	    foreach( new \RecursiveIteratorIterator( new \RecursiveArrayIterator($names) ) as $namePart ) {
+		    $realNames[] = $namePart;
+	    }
+
+	    $names = $realNames;
+
         $initials = $nameOrInitials;
         $assignedNames = 0;
 
@@ -159,7 +191,7 @@ class Initials
      *
      * @return string
      */
-    private function convertToUrlFriendlyString($string)
+    protected function convertToUrlFriendlyString($string)
     {
         foreach (static::charsArray() as $key => $val) {
             $string = str_replace($val, mb_substr($key, 0, 1), $string);
