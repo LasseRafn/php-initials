@@ -7,8 +7,7 @@ It's framework agnostic, which is different from basically everything else I do,
 Supports UTF8 (yes, also emojis.)
  
 <p align="center"> 
-<a href="https://travis-ci.org/LasseRafn/php-initials"><img src="https://img.shields.io/travis/LasseRafn/php-initials.svg?style=flat-square" alt="Build Status"></a>
-<a href="https://coveralls.io/github/LasseRafn/php-initials"><img src="https://img.shields.io/coveralls/LasseRafn/php-initials.svg?style=flat-square" alt="Coverage"></a>
+<a href="https://otterwise.app/github/lasserafn/php-initials"><img src="https://img.shields.io/endpoint?url=https://otterwise.app/badge/github/lasserafn/php-initials/7357cbb2-0474-4291-ab99-16073228dccf" alt="Code Coverage"></a>
 <a href="https://styleci.io/repos/78973710"><img src="https://styleci.io/repos/78973710/shield?branch=master" alt="StyleCI Status"></a>
 <a href="https://packagist.org/packages/LasseRafn/php-initials"><img src="https://img.shields.io/packagist/dt/LasseRafn/php-initials.svg?style=flat-square" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/LasseRafn/php-initials"><img src="https://img.shields.io/packagist/v/LasseRafn/php-initials.svg?style=flat-square" alt="Latest Stable Version"></a>
