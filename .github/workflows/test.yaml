@@ -24,7 +24,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, intl, exif, iconv
-          coverage: pcov
+          coverage: xdebug
       - name: Get composer cache directory
         id: composercache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
@@ -37,7 +37,7 @@ jobs:
       - name: Install Dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader --ignore-platform-reqs
       - name: Execute tests 
-        run: php -d pcov.enabled=1 vendor/bin/phpunit --log-junit build/logs/junit-log.xml --coverage-clover=build/logs/clover.xml
+        run: php vendor/bin/phpunit --log-junit build/logs/junit-log.xml --coverage-clover=build/logs/clover.xml
       - name: Coverage Upload
         env:
           OTTERWISE_TOKEN: ${{ secrets.OTTERWISE_TOKEN }}
