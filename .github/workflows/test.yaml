@@ -36,12 +36,10 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
       - name: Install Dependencies
         run: composer install --no-interaction --prefer-dist --optimize-autoloader --ignore-platform-reqs
-      - name: Execute tests via PHPUnit
-        run: php -d pcov.enabled=1 -d memory_limit=4G vendor/bin/phpunit --log-junit build/logs/junit-log.xml --coverage-clover=build/logs/clover.xml
+      - name: Execute tests 
+        run: php -d pcov.enabled=1 vendor/bin/phpunit --log-junit build/logs/junit-log.xml --coverage-clover=build/logs/clover.xml
       - name: Coverage Upload
         env:
           OTTERWISE_TOKEN: ${{ secrets.OTTERWISE_TOKEN }}
         run: bash <(curl -s https://raw.githubusercontent.com/getOtterWise/bash-uploader/main/uploader.sh) --log-file build/logs/junit-log.xml
 
-
-# todo create deploy request in PlanetScale
