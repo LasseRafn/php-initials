@@ -14,6 +14,18 @@ class InitialGenerationTest extends TestCase
 
         $this->assertEquals('JD', $avatar->getInitials());
 
+        // Double-barreled last name (hyphenated)
+
+        $avatar->name('Lasse Foo-Rafn');
+
+        $this->assertEquals('LF', $avatar->getInitials());
+
+        $avatar->length(3)->name('Lasse Foo-Rafn');
+
+        $this->assertEquals('LFR', $avatar->getInitials());
+
+        $avatar->length(2);
+
         // Single name
 
         $avatar->name('John');
@@ -68,21 +80,23 @@ class InitialGenerationTest extends TestCase
         $this->assertEquals(2, strlen($avatar->getUrlfriendlyInitials()));
     }
 
-    public function testCanGetInitialsWithDifferentLengthWhenUsingPredefinedInitials() {
-	    $avatar = new \LasseRafn\Initials\Initials();
+    public function testCanGetInitialsWithDifferentLengthWhenUsingPredefinedInitials()
+    {
+        $avatar = new \LasseRafn\Initials\Initials();
 
-	    $avatar->name('AMA')->length(3);
+        $avatar->name('AMA')->length(3);
 
-	    $this->assertEquals('AMA', $avatar->generate());
-	    $this->assertEquals(3, strlen($avatar->generate()));
+        $this->assertEquals('AMA', $avatar->generate());
+        $this->assertEquals(3, strlen($avatar->generate()));
     }
 
-    public function testLimitingWorks() {
-	    $avatar = new \LasseRafn\Initials\Initials();
+    public function testLimitingWorks()
+    {
+        $avatar = new \LasseRafn\Initials\Initials();
 
-	    $avatar->name('Amanda Rochnick Lorentz');
+        $avatar->name('Amanda Rochnick Lorentz');
 
-	    $this->assertEquals('AL', $avatar->generate());
-	    $this->assertEquals(2, strlen($avatar->generate()));
+        $this->assertEquals('AL', $avatar->generate());
+        $this->assertEquals(2, strlen($avatar->generate()));
     }
 }

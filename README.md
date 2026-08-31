@@ -72,4 +72,4 @@ $initials->name('Albert Magnum')->generate();
 Will output url-friendly initials (stripping characters like ÆØÅ)
 
 ## Requirements
-* PHP 5.6, 7.0 or 7.1
+* PHP 8.2+

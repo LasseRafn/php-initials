@@ -28,7 +28,7 @@ class Initials
      * Set if should keep lettercase on name.
      * Setting this to false (default) will uppercase the name.
      *
-     * @param boolean $keepCase
+     * @param bool $keepCase
      *
      * @return Initials
      */
@@ -42,7 +42,7 @@ class Initials
     /**
      * Set if should allow (or remove) special characters.
      *
-     * @param boolean $allowSpecialCharacters
+     * @param bool $allowSpecialCharacters
      *
      * @return Initials
      */
@@ -130,29 +130,31 @@ class Initials
      */
     protected function generateInitials()
     {
-	    $nameOrInitials = trim($this->name);
+        $nameOrInitials = trim($this->name);
 
-    	if( !$this->keepCase ) {
-		    $nameOrInitials = mb_strtoupper($nameOrInitials);
-	    }
+        if (!$this->keepCase) {
+            $nameOrInitials = mb_strtoupper($nameOrInitials);
+        }
 
-    	if( !$this->allowSpecialCharacters ) {
-    		$nameOrInitials = preg_replace('/[!@#$%^&*(),.?":{}|<>_]/', '', $nameOrInitials);
-	    }
+        if (!$this->allowSpecialCharacters) {
+            $nameOrInitials = preg_replace('/[!@#$%^&*(),.?":{}|<>_]/', '', $nameOrInitials);
+        }
 
-	    $nameOrInitials = trim( trim( $nameOrInitials, '-' ) );
+        $nameOrInitials = trim(trim($nameOrInitials, '-'));
 
         $names = explode(' ', $nameOrInitials);
 
-	    // Get names with dash (-) between into separate names
-	    $names = array_map( static function ($namePart) { return explode('-', $namePart); }, $names );
-	    $realNames = [];
+        // Split hyphenated names only when extra initials are needed.
+        if (count($names) < $this->length) {
+            $names = array_map(static function ($namePart) { return explode('-', $namePart); }, $names);
+            $realNames = [];
 
-	    foreach( new \RecursiveIteratorIterator( new \RecursiveArrayIterator($names) ) as $namePart ) {
-		    $realNames[] = $namePart;
-	    }
+            foreach (new \RecursiveIteratorIterator(new \RecursiveArrayIterator($names)) as $namePart) {
+                $realNames[] = $namePart;
+            }
 
-	    $names = $realNames;
+            $names = $realNames;
+        }
 
         $initials = $nameOrInitials;
         $assignedNames = 0;
@@ -187,7 +189,7 @@ class Initials
      *
      * Copied from: https://github.com/laravel/framework/blob/5.4/src/Illuminate/Support/Str.php#L56
      *
-     * @param $string
+     * @param string $string
      *
      * @return string
      */

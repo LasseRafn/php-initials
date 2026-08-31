@@ -1,32 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-		 backupStaticAttributes="false"
-		 bootstrap="vendor/autoload.php"
-		 colors="true"
-		 convertErrorsToExceptions="true"
-		 convertNoticesToExceptions="true"
-		 convertWarningsToExceptions="true"
-		 processIsolation="false"
-		 stopOnFailure="false"
-		 syntaxCheck="false">
-	<testsuites>
-		<testsuite name="Package Test Suite">
-			<directory suffix=".php">./tests/</directory>
-		</testsuite>
-	</testsuites>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         cacheDirectory=".phpunit.cache"
+         colors="true">
+    <testsuites>
+        <testsuite name="Package Test Suite">
+            <directory>./tests/</directory>
+        </testsuite>
+    </testsuites>
 
-	<filter>
-		<whitelist processUncoveredFilesFromWhitelist="true">
-			<directory>./src</directory>
-			<exclude>
-				<directory>./vendor</directory>
-				<directory>./tests</directory>
-			</exclude>
-		</whitelist>
-	</filter>
+    <source>
+        <include>
+            <directory>./src</directory>
+        </include>
+    </source>
 
-	<logging>
-		<log type="coverage-clover" target="build/logs/clover.xml"/>
-		<log type="junit" target="build/logs/junit.xml" logIncompleteSkipped="false"/>
-	</logging>
+    <coverage>
+        <report>
+            <clover outputFile="build/logs/clover.xml"/>
+        </report>
+    </coverage>
+
+    <logging>
+        <junit outputFile="build/logs/junit.xml"/>
+    </logging>
 </phpunit>
